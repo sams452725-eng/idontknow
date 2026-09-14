@@ -1,0 +1,10 @@
+# Datasets (exceed GitHub 100MB limit & downloaded competition data)
+_data/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
