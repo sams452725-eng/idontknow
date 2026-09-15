@@ -7,7 +7,7 @@ import pandas as pd
 print(x_train[0])
 # print(x_train[0][0])
 
-print(x_train.shape, y_train.shape) # (60000, 28, 28) (60000,) ------------> 4차원 데이터지만 흑백은 마지막 shape가 무조건 1이기 때문에 생략을 했다.
+print(x_train.shape, y_train.shape) # (60000, 28, 28) (60000,) ------------> 4차원 데이터 표기를 할라면 숫자 하나하나 []처리를 해야하기 때문에 생략한거 같다. 또한 흑백은 마지막 shape가 무조건 1이기 때문에 보통 생략을 한다.
 print(x_test.shape, y_test.shape) # (10000, 28, 28) (10000,)
 
 print(np.unique(y_train, return_counts=True))

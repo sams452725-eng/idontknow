@@ -17,3 +17,4 @@ model.summary()
 # Trainable params: 255
 # Non-trainable params: 0
 
+########### CNN은 반드시 4차원이다. ###########
