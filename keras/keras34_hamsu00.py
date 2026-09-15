@@ -10,7 +10,7 @@ model.add(Dropout(.2))
 model.add(Dense(1))
 
 model.summary()
-################################################
+################################################  파이토치는 거의 100퍼센트 함수형으로 한다.
 #2-2. 함수형 모델 ----------> 순차적 모델과는 다르게 모델을 나중에 정의한다.
 input1 = Input(shape=(3,))      # 순차적 모델에서 'model.add(Dense(10, input_shape=(3,)))'에 해당 됨.
 dense1 = Dense(10, name='ys1')(input1)       # (input1)을 쓰므로 15번 줄과 16번 줄이 연결 되었다.
@@ -20,3 +20,6 @@ drop2 = Dropout(.2)(dense2)
 output1 = Dense(1)(drop2)
 model2 = Model(inputs=input1, outputs=output1)
 model2.summary()
+
+
+# 순차적 모델과 함수형 모델은 결과값에 영향을 미치지 않는다. 표기형식의 차이다.
