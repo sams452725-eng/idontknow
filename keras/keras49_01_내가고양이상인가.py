@@ -51,3 +51,6 @@ if score < 0.5:
 else:
     dog_percent = score * 100
     print(f"🐶 축하합니다! 당신은 {dog_percent:.2f}% 확률로 [개상] 입니다!")
+
+
+    

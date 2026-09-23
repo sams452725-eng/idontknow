@@ -1,6 +1,16 @@
 # Datasets (exceed GitHub 100MB limit & downloaded competition data)
 _data/
 
+# Model checkpoints & weights (never back up models/weights to github)
+_save/
+*.keras
+*.h5
+*.weights.h5
+*.ckpt
+*.pt
+*.pth
+*.onnx
+
 # Python cache
 __pycache__/
 *.py[cod]

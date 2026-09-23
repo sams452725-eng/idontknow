@@ -57,10 +57,10 @@ y_test = xy_test[0][1]
 # print(x_test.shape, y_test.shape)          #(120, 150, 150, 1) (120,)
 
 np_path = './_data/kaggle_cat_dog_npy/'
-np.save(np_path + 'keras45_01_x_train.npy', arr=x_train)     #                                          arr=xy_train[0][0]도 가능
-np.save(np_path + 'keras45_01_y_train.npy', arr=y_train)     # 
-np.save(np_path + 'keras45_01_x_test.npy', arr=x_test)       # 
-np.save(np_path + 'keras45_01_y_test.npy', arr=y_test)       # 
+np.save(np_path + 'keras45_01_x_train.npy', arr=x_train)     # arr=xy_train[0][0]도 가능 
+np.save(np_path + 'keras45_01_y_train.npy', arr=y_train)     # arr=xy_train[0][1]도 가능
+np.save(np_path + 'keras45_01_x_test.npy', arr=x_test)       # arr=xy_train[0][0]도 가능
+np.save(np_path + 'keras45_01_y_test.npy', arr=y_test)       # arr=xy_train[0][1]도 가능
 
 
 exit()
