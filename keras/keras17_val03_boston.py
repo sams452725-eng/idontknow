@@ -19,6 +19,7 @@ x_test = scaler.transform(x_test)
 print(x_train[0])
 print(x_test[0])
 
+exit()
 # 2. 모델 구성
 model = Sequential()
 model.add(Dense(1, input_dim = 13))

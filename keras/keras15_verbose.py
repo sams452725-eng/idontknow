@@ -30,7 +30,7 @@ model.fit(x_train, y_train, epochs=100, batch_size=4,
 # verbose = 1 : 디폴트
 # verbose = 2 : 프로그래스바 삭제
 # verbose = 3 : Epoch만 나옴
-# verbose = 4 : Epoc만 나옴
+# verbose = 4 : Epoch만 나옴
 # verbose = 5 : 침묵
 # verbose = 나머지 : Epoc만 나옴
 
