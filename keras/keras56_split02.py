@@ -88,14 +88,14 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 model.fit(x,y, epochs=3000)
 
-#4. 평가, 예측n
+#4. 평가, 예측
 results = model.evaluate(x,y)
 print('loss :', results)
 
 x_predict = np.array([[7,8,9,10],[3,2,1,0]]).T.reshape(1,4,2)
 y_predict = model.predict(x_predict)
 
-print('[[7,8,9,10],[3,2,1,0]].T의 결과 :', y_predict)  
+print('[[7,8,9,10],[3,2,1,0]].T의 결과 :', y_predict[-1])  
 
 
 '''

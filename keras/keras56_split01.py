@@ -31,13 +31,13 @@ y = bbb[:, -1]
 
 # print(x, y, x.shape, y.shape)     # (6, 4) (6,)
 
-x = x.reshape(x.shape[0], x.shape[1], 1)
+x = x.reshape(x.shape[0], x.shape[1], 1)   #(6, 4, 1)
 
 #2. 모델구성
 model = Sequential()
-# model.add(GRU(16,input_shape=(3,1)))            
+# model.add(GRU(16,input_shape=(4,1)))            
 model.add(LSTM(16, input_shape=(4, 1)))        
-# model.add(SimpleRNN(16, input_shape=(3, 1)))        
+# model.add(SimpleRNN(16, input_shape=(4, 1)))        
 # model.add(Dense(256, activation='relu'))
 model.add(Dense(128, activation='relu'))
 model.add(Dense(64, activation='relu'))

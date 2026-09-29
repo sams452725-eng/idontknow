@@ -59,7 +59,9 @@ x_test = x_test.reshape(-1, 28, 28, 1)     # 또는 (10000, 28, 28, 1)
 x_train = np.concatenate((x_train, x_augmented))          
 y_train = np.concatenate((y_train, y_augmented))
 
+print(x_train.shape, y_train.shape)
 
+exit()
 from sklearn.preprocessing import OneHotEncoder
 ohe = OneHotEncoder(sparse_output=False)
 # y_train = y_train.reshape(60000, 1)
