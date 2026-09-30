@@ -7,7 +7,7 @@ import time
 from sklearn.preprocessing import MinMaxScaler,StandardScaler,MaxAbsScaler,RobustScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
-from tensorflow.keras.layers import Dense, LSTM, SimpleRNN, GRU, Dropout, Flatten
+from tensorflow.keras.layers import Dense, LSTM, SimpleRNN, GRU, Dropout, Flatten, Bidirectional
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 from sklearn.metrics import accuracy_score
 
@@ -29,10 +29,10 @@ end_time1 = time.time()
 
 #2. 모델구성
 model = Sequential()
-# model.add(SimpleRNN(64, input_shape=(3, 1), return_sequences=True, activation='linear'))        
-model.add(GRU(64,input_shape=(144,13), return_sequences=True, activation='relu'))            
-# model.add(LSTM(32, input_shape=(3,1), return_sequences=True, activation='linear'))    
-model.add(LSTM(32, activation='relu', return_sequences=True))      
+# model.add(Bidirectional(SimpleRNN(64), input_shape=(144, 13), return_sequences=True, activation='relu'))        
+model.add(Bidirectional(GRU(64, return_sequences=True, activation='relu'),input_shape=(144,13)))            
+# model.add(Bidirectional(LSTM(64), input_shape=(3,1), return_sequences=True, activation='linear'))    
+model.add(Bidirectional(LSTM(32), activation='relu', return_sequences=True))      
 # model.add(LSTM(32, input_shape=(144,13), activation='relu', return_sequences=True))
 # model.add(Flatten())     
 model.add(LSTM(8, activation='relu'))      
@@ -88,6 +88,7 @@ print('걸린시간2 :', round(end_time2 - start_time2, 2), '초')
 
 '''
 1차
+
 
 
 
