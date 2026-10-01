@@ -47,7 +47,7 @@ size_y=144
 x= split_x(x_data,size_x)
 y= split_x(y_data,size_y)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, random_state=333,)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, random_state=333, shuffle=False)
 
 
 x_train = x_train.reshape(-1, 13)
@@ -65,6 +65,7 @@ x_test = scaler.transform(x_test)
 x_train = x_train.reshape(-1, 144, 13)
 x_test = x_test.reshape(-1, 144, 13)
 end_time1 = time.time()
+
 
 
 

@@ -21,7 +21,7 @@ model = ChatOpenAI(
     base_url=base_url,
 )
 
-chain = prompt | model      # python에서 '|' 연산자는 'or'랑 똑같은 의미이다.-----> 하지만 langchain에서는 prompt는 model로 하라는 의미로 재정의 했다.
+chain = prompt | model      # python에서 '|' 연산자는 'or'랑 똑같은 의미이다.-----> 하지만 langchain에서는 prompt는 model로 하라는 덮어쓰기 개념의 overriding으로 재정의 했다.
 input = {'topic' : '양자컴퓨터 학습 원리'}
 
 response = chain.invoke(input)

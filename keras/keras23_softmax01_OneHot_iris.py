@@ -50,8 +50,6 @@ from sklearn.preprocessing import OneHotEncoder
 # y = y.reshape(150,1)      #(150, 1)
 y = y.reshape(-1,1)      #(150, 1)        ---------------------> 늘상 y값의 범위를 알수없기 때문에 앞에 -1을 쓰면 1부터 전체 y의 범위의 제일 끝까지 범위가 설정된다.
 print(y, y.shape)
-
-# exit()
 ohe = OneHotEncoder()       # sparse라는 혼돈행렬의 형태로 값이 반환된다.
 ohe = OneHotEncoder(sparse_output=False)
 y = ohe.fit_transform(y)
