@@ -55,31 +55,23 @@ x_test = x_test.reshape(x_test.shape[0], 28, 28)
 
 # exit()
 #2. 모델구성
-# model = Sequential()
-# model.add(LSTM(16, return_sequences=True), input_shape=(28, 28))        
-# # model.add(Conv2D(64, (5,5), input_shape=(28,28,1)))
-# # model.add(Conv2D(32, (3,3), activation='relu'))
-# model.add(LSTM(32, return_sequences=True))      
-# model.add(Conv2D(64, (5,5), input_shape=(28,28,1)))
-# model.add(Conv2D(16, (3,3), activation='relu'))
-# model.add(Conv2D(16, (3,3), activation='relu'))
-# model.add(Conv2D(16, (3,3), activation='relu'))
-# model.add(GlobalAveragePooling2D()) 
-# model.add(Dense(units=32, activation='relu'))
-# model.add(Dense(units=16, activation='relu'))
-# model.add(Dropout(.5))
-# model.add(Dense(10, activation='softmax'))
-# model.summary()
 
+# model = Sequential([
+#     LSTM(16, return_sequences=True, input_shape=(28, 28)),
+#     LSTM(32, return_sequences=True),
+#     Reshape((28,32,1)),
+#     Conv2D(16, (3,3), activation='relu'),
+#     GlobalAveragePooling2D(),
+#     Dense(10, activation='softmax')
+# ])
 
-model = Sequential([
-    LSTM(16, return_sequences=True, input_shape=(28, 28)),
-    LSTM(32, return_sequences=True),
-    Reshape((28,32,1)),
-    Conv2D(16, (3,3), activation='relu'),
-    GlobalAveragePooling2D(),
-    Dense(10, activation='softmax')
-])
+model = Sequential()
+model.add(LSTM(16, return_sequences=True, input_shape=(28, 28)))
+model.add(LSTM(32, return_sequences=True))
+model.add(Reshape((28, 32, 1)))
+model.add(Conv2D(16, (3, 3), activation='relu'))
+model.add(GlobalAveragePooling2D())
+model.add(Dense(10, activation='softmax'))
 
 
 
