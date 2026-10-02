@@ -1,4 +1,6 @@
+# pyrefly: ignore [missing-import]
 import numpy as np
+# pyrefly: ignore [missing-import]
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
@@ -51,7 +53,7 @@ model.add(Dense(1))
 
 ################## 임베딩2 ##################
 model.add(Embedding(input_dim=30, output_dim=100))     #input_length는 굳이 명시하지 않아도 알아서 맞춰준다.
-#                   단어사전의 개수,    차원,
+#                   단어사전의 개수,    차원,            # 차원은 output_node와 같은 개념이다. 너무 작으면 벡터화 했을 때 정보가 많이 손실될 수 있다.
 model.add(SimpleRNN(10))
 model.add(Dense(1))
 

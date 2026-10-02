@@ -37,14 +37,14 @@ x_pred = token.texts_to_sequences(x_pred)
 y = labels
 ######################## 패딩 ########################
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-x = pad_sequences(x, padding='pre', maxlen=5, truncating='post')
+padded_x = pad_sequences(x, padding='pre', maxlen=5, truncating='post')
 x_pred = pad_sequences(x_pred, padding='pre', maxlen=5, truncating='post')
 # print(x_pred.shape)      # (1, 5)
-# print(x.shape)           # (15, 5)
+# print(padded_x.shape)    # (15, 5)
 # print(y.shape)           # (15,)
 
 # exit()
-x = x.reshape(x.shape[0], x.shape[1], 1)
+x = padded_x.reshape(padded_x.shape[0], padded_x.shape[1], 1)
 x_pred = x_pred.reshape(x_pred.shape[0], x_pred.shape[1], 1)
 
 # print(x.shape, x_pred.shape)       #(15, 5, 1) (1, 5, 1)

@@ -39,10 +39,10 @@ x = token.texts_to_sequences(docs)
 # print(x)
 # [[2, 3], [1, 4], [1, 5, 6], [7, 8, 9], [10, 11, 12, 13, 14], [15], [16], [17, 18], [19, 20], [21], [2, 22], [1, 23], [24, 25], [26, 27], [28, 29, 30]]
 # 크기가 다 다르기 때문에 가장 긴 크기에 맞춰준다. 때론 너무 길때는 적당하게 짤라줄수도 있다.
-y = labels
+
 ######################## 패딩 ########################
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-x = pad_sequences(x,                          # x를 padding하겠다.
+padded_x = pad_sequences(x,                          # x를 padding하겠다.
                          padding='pre',              #앞을 '0'으로 채우려면 padding='pre', 반대로 뒤를 '0'으로 채우려면 padding='post'  
                          maxlen=5,
                          truncating='post'            # 최대 숫자보다 작은 수로 잡으면 디폴트는 앞이 짤린다. 'post'로 바꾸면 뒤가 짤린다.
@@ -69,7 +69,7 @@ x_pred = pad_sequences(x_pred, padding='pre', maxlen=5, truncating='post')
 
 
 # exit()
-x_train, x_test, y_train, y_test = train_test_split(x, y,train_size=0.8, random_state=333)
+x_train, x_test, y_train, y_test = train_test_split(padded_x, labels,train_size=0.8, random_state=333)
 
 
 #2. 모델구성
