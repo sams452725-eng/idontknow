@@ -11,6 +11,11 @@ _save/
 *.pth
 *.onnx
 
+# Vector database storage & binary indexes
+_db/
+*.sqlite3
+*.faiss
+
 # Python cache
 __pycache__/
 *.py[cod]

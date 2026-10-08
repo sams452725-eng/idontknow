@@ -47,7 +47,7 @@ size_y=144
 x= split_x(x_data,size_x)
 y= split_x(y_data,size_y)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, random_state=333, shuffle=False)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, random_state=4333, shuffle=False)
 
 
 x_train = x_train.reshape(-1, 13)
@@ -69,7 +69,7 @@ end_time1 = time.time()
 
 
 
-np_path = './_data/kaggle_jena_npy/'
+np_path = './_save/kaggle_jena_npy/'
 np.save(np_path + 'y_cor.npy', arr=y_cor)
 np.save(np_path + 'x_train.npy', arr=x_train)
 np.save(np_path + 'y_train.npy', arr=y_train)

@@ -7,7 +7,7 @@ import time
 from sklearn.preprocessing import MinMaxScaler,StandardScaler,MaxAbsScaler,RobustScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
-from tensorflow.keras.layers import Dense, LSTM, SimpleRNN, GRU, Dropout, Flatten
+from tensorflow.keras.layers import Dense, LSTM, SimpleRNN, GRU, Dropout, Flatten, Conv2D, Reshape
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 from sklearn.metrics import accuracy_score
 
@@ -26,18 +26,26 @@ end_time1 = time.time()
 
 # print('걸린시간1 :', round(end_time1 - start_time1, 2), '초')    #걸린시간1 : 2.1 초
 
+x_train = x_train.reshape(-1, 12, 12, 13)
+x_test = x_test.reshape(-1, 12, 12, 13)
+
 
 #2. 모델구성
 model = Sequential()
+model.add(Conv2D(8, (3,3), input_shape=(12,12,13), activation='relu'))     #(10,10,8)
+model.add(Conv2D(16, (3,3), activation='relu'))   #(8,8,16)
+model.add(Conv2D(13, (3,3), activation='relu'))   #(6,6,13)
+model.add(Dropout(0.5))
+model.add(Reshape(target_shape=(36,13)))
 # model.add(SimpleRNN(64, input_shape=(3, 1), return_sequences=True, activation='linear'))        
-model.add(GRU(64,input_shape=(144,13), return_sequences=True))            
+# model.add(GRU(64,input_shape=(144,13), return_sequences=True))            
 # model.add(LSTM(32, input_shape=(3,1), return_sequences=True, activation='linear'))    
-model.add(LSTM(32, return_sequences=True))      
+model.add(LSTM(8, return_sequences=True, activation='relu'))      
 # model.add(LSTM(32, input_shape=(144,13), activation='relu', return_sequences=True))
 # model.add(Flatten())     
-model.add(LSTM(8,))      
-model.add(Dense(4,))
-model.add(Dense(144))
+model.add(LSTM(16, activation='relu'))      
+model.add(Dense(16, activation='relu'))
+model.add(Dense(144, activation='relu'))
 # model.summary()
 
 
@@ -125,7 +133,42 @@ Test RMSE : 3.182374076145388
 걸린시간1 : 4.6 초
 걸린시간2 : 4427.52 초
 
+CNN----->LSTM
+1차
+loss(MSE) : 21.872039794921875
+MAE       : 3.776445150375366
+mse:  21.87205188216139
+Test R2   : 0.6641342864356186
+Test RMSE : 4.676756555793918
+걸린시간1 : 1.88 초
+걸린시간2 : 288.87 초
 
+2차
+loss(MSE) : 9.15666389465332
+MAE       : 2.3327317237854004
+mse:  9.156667056894243
+Test R2   : 0.8594281940035993
+Test RMSE : 3.0259985222888397
+걸린시간1 : 2.86 초
+걸린시간2 : 152.02 초
+
+3차
+loss(MSE) : 193.7266387939453
+MAE       : 11.701072692871094
+mse:  193.72665893964984
+Test R2   : -1.9748501705488724
+Test RMSE : 13.918572446183187
+걸린시간1 : 1.81 초
+걸린시간2 : 1475.28 초
+
+4차
+loss(MSE) : 193.7266387939453
+MAE       : 11.701072692871094
+mse:  193.72665893964984
+Test R2   : -1.9748501705488724
+Test RMSE : 13.918572446183187
+걸린시간1 : 1.94 초
+걸린시간2 : 1095.01 초
 
 
 
