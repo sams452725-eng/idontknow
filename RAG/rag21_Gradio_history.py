@@ -104,8 +104,8 @@ import gradio as gr
 # 아래의 함수는 gradio에서만 작동할 가능성이 크다. 다른 챗봇을 만드는 import에서도 answer를 반환하는 함수만 만들어주면 된다.
 def answer_invoke(message, history):
     chat_history = []
-
-    for item in history[-10:]:                 # [-10:]의 의미는 쌓인 history가 너무 많으면 오래걸리고 토큰 사용량도 많기 때문에 뒤에서부터 10개 즉, 최근 10개만 사용한다는 의미다.
+ # [-10:]의 의미는 쌓인 history가 너무 많으면 오래걸리고 토큰 사용량도 많기 때문에 뒤에서부터 10개 즉, 최근 10개만 사용한다는 의미다. 내가 말한것과 답변의 합이 10개 이므로 내가 한 말을 10개 쓰고 싶으면 [-20]하면 된다.
+    for item in history[-10:]:
         content = item['content']
 
         if item['role'] == 'user':
