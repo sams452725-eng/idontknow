@@ -81,10 +81,7 @@ y_test = ohe.fit_transform(y_test)
 # print(y_train.shape, y_test.shape)  # (50000, 100) (10000, 100)
 # print(x_train.shape, x_test.shape)  # (90000, 32, 32, 3) (10000, 32, 32, 3)
 
-x_train = x_train.reshape(-1,32*32,3)
-x_test = x_test.reshape(-1,32*32,3)
 
-# print(x_train.shape, x_test.shape)    # (90000, 1024, 3) (10000, 1024, 3)
 
 # exit()
 random.seed(333)
@@ -108,7 +105,7 @@ model.add(vgg16)
 model.add(Flatten())
 model.add(Dense(100))
 model.add(Dense(100))
-model.add(Dense(10, activation='softmax'))
+model.add(Dense(100, activation='softmax'))
 
 
 
@@ -190,9 +187,11 @@ acc : 0.009999999776482582
 accuracy_score :  0.01
 걸린시간 :  1101.53 초
 
-Conv1D
-1차
-
+vgg16
+loss : 2.1530356407165527
+acc : 0.5985999703407288
+accuracy_score :  0.5986
+걸린시간 :  1033.01 초
 
 
 
