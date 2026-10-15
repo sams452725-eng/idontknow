@@ -55,14 +55,14 @@ np.random.seed(333)
 tf.random.set_seed(333)
 
 
-model_list = [VGG19(include_top=False, input_shape=(32,32,3)),
-              ResNet50(include_top=False, input_shape=(32,32,3)),
-              ResNet101(include_top=False, input_shape=(32,32,3)), 
-              DenseNet201(include_top=False, input_shape=(32,32,3)),
+model_list = [VGG19(include_top=False, input_shape=(250, 250,3)),
+              ResNet50(include_top=False, input_shape=(250, 250,3)),
+              ResNet101(include_top=False, input_shape=(250, 250,3)), 
+              DenseNet201(include_top=False, input_shape=(250, 250,3)),
             #   InceptionV3(),
             #   InceptionResNetV2(),
-              MobileNetV2(include_top=False, input_shape=(32,32,3)),
-              EfficientNetB0(include_top=False, input_shape=(32,32,3)),]
+              MobileNetV2(include_top=False, input_shape=(250, 250,3)),
+              EfficientNetB0(include_top=False, input_shape=(250, 250,3)),]
 
 
 
@@ -73,14 +73,14 @@ for model_i in model_list:
     model = Sequential()
     model.add(model_i)
     model.add(GlobalAveragePooling2D())
-    model.add(Dense(32))
-    model.add(Dense(16))
-    model.add(Dense(10, activation='softmax'))
+    model.add(Dense(128, activation='relu'))
+    model.add(Dense(64, activation='relu'))
+    model.add(Dense(2, activation='softmax'))
     
 
     #3. 컴파일, 훈련
     from tensorflow.keras.optimizers import Adam
-    learning_rate = 0.005
+    learning_rate = 0.001
 
     model.compile(loss='sparse_categorical_crossentropy',
                   optimizer=Adam(learning_rate=learning_rate), metrics=['acc'])
@@ -112,3 +112,21 @@ print('모델명 :', model_i.name, 'loss :', loss[0], 'acc :', loss[1])
 print('걸린시간 : ', round(end_time - start_time, 2), '초')
 
 
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
