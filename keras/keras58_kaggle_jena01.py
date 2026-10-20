@@ -27,7 +27,7 @@ y_cor = datasets[-144:]['T (degC)']      # 예측치 정답 데이터
 
 ##################### 훈련 데이터 자르기 #####################
 x_data = datasets[:-288].drop(['T (degC)'], axis=1)    
-y_data = datasets[144:-144]['T (degC)']    
+y_data = datasets[144:-144]['T (degC)']
 
 
 # print(x_data.shape)    #(420263, 13)

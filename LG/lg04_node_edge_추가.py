@@ -30,6 +30,7 @@ class State(TypedDict):
 
 
 #################### 2. node 정의 ####################
+# (state : State)는 state=State()를 받아들이라는 말이다
 def prepare(state : State):
     return{'messages' :
            [AIMessage(content='질문을 접수했습니다!!')]}
