@@ -1,4 +1,4 @@
-# lg05 카피
+# lg08-1 카피
 
 from langchain_openai import ChatOpenAI
 import os
@@ -12,7 +12,7 @@ base_url = 'https://monogpt.kr/api/monorouter/v1'
 llm = ChatOpenAI(
     model_name=' gpt-6.1-sol',
     temperature=0,
-    max_tokens=2000,
+    # max_tokens=2000,
     api_key=api_key,
     base_url=base_url,
 )
@@ -39,6 +39,8 @@ from typing import Annotated, TypedDict
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode, tools_condition
+# 메모리 기능 추가 첫번째
+from langgraph.checkpoint.memory import InMemorySaver
 
 #################### 1. State 정의 ####################
 class State(TypedDict):
@@ -73,31 +75,28 @@ graph_builder.add_edge('tools', 'chatbot')
 
 
 #################### 5. graph compile ####################
-graph = graph_builder.compile()
+# 메모리 기능 추가 두번째
+memory = InMemorySaver()
+
+graph = graph_builder.compile(
+    checkpointer=memory)
 
 #################### 6. graph 실행 ####################
-# query = '삼성전자의 오늘 주가 얼마'
+# 메모리 기능 추가 세번째
+config = {'configurable' : {'thread_id' : 'user01'}}
 
-# response = graph.invoke({'messages' : [('user', query)]})
+print('='*15, '첫번째 질문', '='*15)
+# 첫번째 질문
+response = graph.invoke(
+    {'messages' : [('user', '내 이름은 김기관이야.')]},
+    config=config
+)
+print(response['messages'][-1].content)
 
-# print('AI : ', response['messages'][-1].content)
-
-
-##########################################################
-# 그래프 이미지 저장
-##########################################################
-path = './_save/image/'
-
-png_data = graph.get_graph().draw_mermaid_png()
-
-with open(path + 'lg07_ToolNode.png', 'wb') as file:        #with는 항상 자동으로 close가 된다.
-    file.write(png_data)
-
-# 통상 실무 코드
-# with open(path + 'lg07_ToolNode.png', 'wb') as f:        #with는 항상 자동으로 close가 된다.
-#     f.write(png_data)
-#       위, 아래 모두 같은 코드다.
-
-# file = open(path + 'lg07_ToolNode.png', 'wb')
-# file.write(png_data)
-# file.close()            # 파이썬 기본에서 워낙 잘 되있어서 안해도 되지만 반드시 하는 습관!!
+print('='*15, '두번째 질문', '='*15)
+# 두번째 질문
+response = graph.invoke(
+    {'messages' : [('user', '내 이름이 뭐라고 했지?')]},
+    config=config
+)
+print(response['messages'][-1].content)

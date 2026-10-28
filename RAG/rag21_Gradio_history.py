@@ -82,8 +82,7 @@ from langchain_core.prompts import MessagesPlaceholder
 from langchain_core.messages import HumanMessage,AIMessage
 prompt = ChatPromptTemplate.from_messages([
     ('system', '''
-    다음 컨텍스트를 바탕으로 질문에 답변해 주세요. 컨텍스트 관련 정보가 없다면,
-    '주어진 정보로는 답변할 수 없습니다.'라고 말씀해주세요.
+    아무거나 웹에서 검색해서 내가 묻는 말에 대답해.
 
 
     컨텍스트 : {context}

@@ -28,3 +28,7 @@ __pycache__/
 .env
 .env.*
 *.env
+
+# Competition submissions & private test scripts
+keras_s6e10_*.py
+test_v5_*.py
