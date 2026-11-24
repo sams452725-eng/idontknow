@@ -16,6 +16,9 @@ _db/
 *.sqlite3
 *.faiss
 
+# CatBoost training logs (auto-generated)
+catboost_info/
+
 # Python cache
 __pycache__/
 *.py[cod]
