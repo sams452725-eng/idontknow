@@ -1,0 +1,26 @@
+# Ruff 설정 (https://docs.astral.sh/ruff/configuration/)
+line-length = 120
+target-version = "py312"
+
+extend-exclude = [
+    "catboost_info",
+    "_data",
+    "_save",
+]
+
+[lint]
+# E/W: pycodestyle, F: pyflakes, I: import 정렬, B: bugbear, UP: pyupgrade
+select = ["E", "W", "F", "I", "B", "UP"]
+ignore = [
+    "E501",  # 줄 길이 (formatter가 처리)
+    "E402",  # 파일 중간 import 허용 (학습용 스크립트)
+    "E731",  # lambda 할당 허용
+    "E741",  # l, O, I 같은 변수명 허용
+]
+# 노트북(.ipynb)에서는 미사용 변수/표현식 경고 완화
+[lint.per-file-ignores]
+"*.ipynb" = ["F401", "F841", "B018"]
+
+[format]
+quote-style = "double"
+indent-style = "space"

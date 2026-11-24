@@ -1,0 +1,9 @@
+# 커밋 전에 스테이징된 파일만 Ruff로 검사합니다.
+# 설치: pre-commit install   /  전체 수동 실행: pre-commit run --all-files
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.6  # 로컬 ruff 버전과 맞춤
+    hooks:
+      - id: ruff-check
+        args: [--fix]   # 자동 수정 가능한 건 고치고, 수정이 생기면 커밋 중단
+      - id: ruff-format
